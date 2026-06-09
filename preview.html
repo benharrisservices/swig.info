@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SWIG · Hospitality and event logistics · United Kingdom</title>
+<meta name="description" content="SWIG runs the logistics behind events and hospitality across the UK. We supply the equipment, build the bars and run the crews, ready when you need them and set up on time." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+/* ============================================================
+   SWIG, design tokens
+   ============================================================ */
+:root{
+  --ink:        #0a0a0b;
+  --ink-2:      #101012;
+  --paper:      #f4f3f1;
+  --paper-2:    #ecebe8;
+  --white:      #ffffff;
+
+  --grey-600:   #5a5a5e;
+  --grey-500:   #76767b;
+  --grey-400:   #9a9aa0;
+
+  --line-dark:  rgba(255,255,255,0.10);
+  --line-dark-2:rgba(255,255,255,0.18);
+  --line-light: rgba(10,10,11,0.12);
+  --line-light-2:rgba(10,10,11,0.22);
+
+  --metal:      #b9b6ad; /* the one, barely-there, muted accent */
+
+  --sans: "Geist","Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --mono: "Geist Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+
+  --gutter: clamp(1.25rem, 5vw, 6rem);
+  --maxw: 1480px;
+
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+html{ -webkit-text-size-adjust:100%; scroll-behavior:smooth; }
+@media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } }
+
+body{
+  margin:0;
+  font-family:var(--sans);
+  background:var(--ink);
+  color:var(--paper);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  font-weight:400;
+  line-height:1.5;
+  letter-spacing:-0.006em;
+  overflow-x:hidden;
+}
+
+::selection{ background:var(--ink); color:var(--paper); }
+.panel--dark ::selection{ background:var(--paper); color:var(--ink); }
+
+a{ color:inherit; text-decoration:none; }
+h1,h2,h3,p{ margin:0; }
+img{ max-width:100%; display:block; }
+
+.mono{
+  font-family:var(--mono);
+  font-weight:400;
+  font-size:0.7rem;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  font-variant-numeric:tabular-nums;
+}
+.hero__statement,.lede,.cap__title,.model__lede,.vision__lede,.contact__lede,.row__name,.step__name,.spec__v{ text-wrap:balance; }
+.hero__sub,.orient__body p,.cap__note,.row__desc,.step__desc,.spec__k,.vision__col p,.chan__d{ text-wrap:pretty; }
+/* operational call-to-action */
+.opcta{ display:inline-flex; align-items:baseline; gap:0.6rem; margin-top:clamp(2.5rem,5vh,4rem); font-family:var(--mono); font-size:0.72rem; letter-spacing:0.16em; text-transform:uppercase; color:inherit; }
+.opcta__txt{ position:relative; padding-bottom:3px; }
+.opcta__txt::after{ content:""; position:absolute; left:0; bottom:0; height:1px; width:0; background:currentColor; transition:width 0.45s var(--ease); }
+.opcta:hover .opcta__txt::after{ width:100%; }
+.opcta__arrow{ transition:transform 0.4s var(--ease); }
+.opcta:hover .opcta__arrow{ transform:translateX(5px); }
+@media (prefers-reduced-motion: reduce){ .opcta:hover .opcta__arrow{ transform:none; } }
+.hero .opcta{ color:var(--paper); }
+.contact__sub{ margin-top:clamp(1.75rem,4vh,2.75rem); max-width:52ch; font-size:clamp(1.05rem,1.6vw,1.3rem); line-height:1.5; color:var(--grey-400); }
+.contact__call{ display:inline-flex; align-items:baseline; gap:0.9rem; margin-top:clamp(1.75rem,4vh,2.75rem); color:var(--paper); }
+.contact__call-k{ color:var(--grey-500); }
+.contact__call-num{ position:relative; font-size:clamp(1.4rem,3vw,2.1rem); font-weight:500; letter-spacing:-0.01em; font-variant-numeric:tabular-nums; }
+.contact__call-num::after{ content:""; position:absolute; left:0; bottom:-2px; height:1px; width:0; background:currentColor; transition:width 0.45s var(--ease); }
+.contact__call:hover .contact__call-num::after{ width:100%; }
+.cards{ margin-top:clamp(3rem,7vh,5rem); display:grid; grid-template-columns:1fr; border-top:1px solid var(--line-dark); }
+@media (min-width:760px){ .cards{ grid-template-columns:repeat(2,1fr); } }
+@media (min-width:1100px){ .cards{ grid-template-columns:repeat(4,1fr); } }
+.card{ display:flex; flex-direction:column; align-items:flex-start; gap:1.1rem; padding:2.3rem 0 2.5rem; border-bottom:1px solid var(--line-dark); }
+@media (min-width:760px){ .card{ border-bottom:0; border-left:1px solid var(--line-dark); padding:2.5rem 1.9rem; min-height:230px; } .card:first-child{ border-left:0; padding-left:0; } }
+@media (min-width:760px) and (max-width:1099px){ .card:nth-child(3){ border-left:0; padding-left:0; } }
+@media (min-width:1100px){ .card:nth-child(4){ padding-right:0; } }
+.card__k{ color:var(--grey-500); }
+.card__d{ flex:1; color:var(--grey-500); font-size:0.95rem; line-height:1.55; }
+.card__cta{ display:inline-flex; align-items:center; gap:0.55rem; font-family:var(--mono); font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--paper); }
+.card__cta-txt{ position:relative; padding-bottom:3px; }
+.card__cta-txt::after{ content:""; position:absolute; left:0; bottom:0; height:1px; width:0; background:currentColor; transition:width 0.45s var(--ease); }
+.card__cta:hover .card__cta-txt::after{ width:100%; }
+.card__cta-arrow{ transition:transform 0.4s var(--ease); }
+.card__cta:hover .card__cta-arrow{ transform:translateX(4px); }
+.hero__w3w{ position:relative; }
+.hero__w3w::after{ content:""; position:absolute; left:0; bottom:-2px; height:1px; width:0; background:currentColor; transition:width 0.4s var(--ease); }
+.hero__w3w:hover::after{ width:100%; }
+.nav__tel{ font-family:var(--mono); font-size:0.7rem; letter-spacing:0.16em; text-transform:uppercase; font-variant-numeric:tabular-nums; color:inherit; opacity:0.72; transition:opacity 0.3s var(--ease); }
+.nav__tel:hover{ opacity:1; }
+.menu .menu__tel{ font-size:1rem; letter-spacing:0.16em; color:var(--grey-500); margin-top:0.75rem; }
+
+/* skip link */
+.skip{
+  position:absolute; left:-9999px; top:0; z-index:200;
+  background:var(--paper); color:var(--ink);
+  padding:0.75rem 1.25rem; font-family:var(--mono); font-size:0.7rem;
+  letter-spacing:0.16em; text-transform:uppercase;
+}
+.skip:focus{ left:1rem; top:1rem; }
+
+:focus-visible{ outline:2px solid currentColor; outline-offset:3px; border-radius:1px; }
+
+/* ============================================================
+   loading veil
+   ============================================================ */
+.veil{
+  position:fixed; inset:0; z-index:150;
+  background:var(--ink);
+  display:flex; align-items:flex-end; justify-content:space-between;
+  padding:var(--gutter);
+  transition:transform 1s var(--ease) 0.15s, opacity 0.6s ease 0.6s;
+}
+.veil__mark{ font-family:var(--mono); font-size:0.7rem; letter-spacing:0.3em; color:var(--grey-500); }
+.veil__bar{ position:absolute; left:0; bottom:0; height:1px; width:0; background:var(--line-dark-2); transition:width 0.9s var(--ease); }
+body.loaded .veil{ transform:translateY(-101%); opacity:0; pointer-events:none; }
+body.loaded .veil__bar{ width:100%; }
+
+/* ============================================================
+   nav
+   ============================================================ */
+.nav{
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:1.15rem var(--gutter);
+  color:var(--paper);
+  transition:background 0.5s var(--ease), border-color 0.5s var(--ease), padding 0.4s var(--ease), color 0.5s var(--ease);
+  border-bottom:1px solid transparent;
+}
+.nav.is-stuck{
+  background:rgba(10,10,11,0.72);
+  backdrop-filter:saturate(140%) blur(14px);
+  -webkit-backdrop-filter:saturate(140%) blur(14px);
+  border-bottom:1px solid var(--line-dark);
+  padding-top:0.9rem; padding-bottom:0.9rem;
+}
+.nav.is-light{ color:var(--ink); }
+.nav.is-light.is-stuck{
+  background:rgba(244,243,241,0.74);
+  border-bottom:1px solid var(--line-light);
+}
+.nav__brand{
+  font-weight:600; font-size:1.05rem; letter-spacing:0.02em;
+  display:flex; align-items:center; gap:0.7rem;
+}
+.nav__dot{
+  width:6px; height:6px; border-radius:50%;
+  background:var(--metal);
+  box-shadow:0 0 0 0 rgba(185,182,173,0.5);
+  animation:pulse 3.4s var(--ease) infinite;
+}
+@keyframes pulse{
+  0%,100%{ opacity:1; box-shadow:0 0 0 0 rgba(185,182,173,0.45); }
+  50%{ opacity:0.55; box-shadow:0 0 0 5px rgba(185,182,173,0); }
+}
+@media (prefers-reduced-motion: reduce){ .nav__dot{ animation:none; } }
+
+.nav__links{ display:flex; align-items:center; gap:2.4rem; }
+.nav__link{
+  font-family:var(--mono); font-size:0.7rem; letter-spacing:0.16em; text-transform:uppercase;
+  color:inherit; opacity:0.72; position:relative; padding:0.25rem 0;
+  transition:opacity 0.3s var(--ease);
+}
+.nav__link::after{
+  content:""; position:absolute; left:0; bottom:-2px; height:1px; width:0; background:currentColor;
+  transition:width 0.4s var(--ease);
+}
+.nav__link:hover{ opacity:1; }
+.nav__link:hover::after{ width:100%; }
+.nav__cta{
+  font-family:var(--mono); font-size:0.7rem; letter-spacing:0.16em; text-transform:uppercase;
+  border:1px solid currentColor; padding:0.6rem 1.1rem; opacity:0.9;
+  transition:background 0.35s var(--ease), color 0.35s var(--ease), opacity 0.35s var(--ease);
+}
+.nav__cta:hover{ opacity:1; background:var(--paper); color:var(--ink); }
+.nav.is-light .nav__cta:hover{ background:var(--ink); color:var(--paper); }
+
+.nav__toggle{ display:none; background:none; border:0; color:inherit; cursor:pointer; padding:0.5rem; }
+.nav__toggle span{ display:block; width:24px; height:1.5px; background:currentColor; margin:5px 0; transition:transform 0.4s var(--ease), opacity 0.3s var(--ease); }
+.nav__toggle.is-open span:nth-child(1){ transform:translateY(6.5px) rotate(45deg); }
+.nav__toggle.is-open span:nth-child(2){ transform:translateY(-6.5px) rotate(-45deg); }
+
+/* mobile menu */
+.menu{
+  position:fixed; inset:0; z-index:90; background:var(--ink);
+  display:flex; flex-direction:column; justify-content:center; gap:1.5rem;
+  padding:var(--gutter);
+  transform:translateY(-100%); transition:transform 0.6s var(--ease);
+}
+.menu.is-open{ transform:translateY(0); }
+.menu a{ font-size:2rem; font-weight:500; letter-spacing:-0.02em; color:var(--paper); }
+.menu .mono{ color:var(--grey-500); }
+
+/* ============================================================
+   structure
+   ============================================================ */
+.panel{ position:relative; }
+[id]{ scroll-margin-top:84px; }
+.panel--dark{ background:var(--ink); color:var(--paper); }
+.panel--light{ background:var(--paper); color:var(--ink); }
+.wrap{ max-width:var(--maxw); margin:0 auto; padding-left:var(--gutter); padding-right:var(--gutter); }
+
+/* datum index (right rail) */
+.datum{
+  position:fixed; right:clamp(1rem,2.2vw,2.2rem); top:50%; transform:translateY(-50%);
+  z-index:60; display:flex; flex-direction:column; gap:0.85rem;
+  mix-blend-mode:difference; color:#fff;
+  opacity:0; transition:opacity 0.6s var(--ease);
+  pointer-events:none;
+}
+body.loaded .datum{ opacity:1; }
+.datum__item{ display:flex; align-items:center; gap:0.6rem; justify-content:flex-end; }
+.datum__num{ font-family:var(--mono); font-size:0.62rem; letter-spacing:0.14em; opacity:0.4; transition:opacity 0.4s var(--ease); }
+.datum__tick{ width:14px; height:1px; background:currentColor; opacity:0.35; transition:width 0.4s var(--ease), opacity 0.4s var(--ease); }
+.datum__item.is-active .datum__num{ opacity:1; }
+.datum__item.is-active .datum__tick{ width:30px; opacity:1; }
+@media (max-width:1100px){ .datum{ display:none; } }
+
+/* ============================================================
+   1 · HERO / arrival
+   ============================================================ */
+.hero{ min-height:100svh; display:flex; flex-direction:column; justify-content:space-between; padding-top:8rem; padding-bottom:2rem; }
+.hero__top{ display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:1rem; color:var(--grey-400); }
+.hero__status{ display:flex; align-items:center; gap:0.7rem; }
+.hero__status .live{ width:6px; height:6px; border-radius:50%; background:var(--metal); }
+.hero__center{ flex:1; display:flex; flex-direction:column; justify-content:center; padding:3rem 0; }
+.wordmark{
+  font-weight:600; line-height:0.86; letter-spacing:-0.03em;
+  font-size:clamp(5rem, 22vw, 21rem);
+  margin-left:-0.04em;
+}
+.hero__statement{
+  margin-top:clamp(1.5rem,3vw,2.5rem); max-width:38ch;
+  font-size:clamp(1.35rem,2.6vw,2.1rem); font-weight:400; line-height:1.18; letter-spacing:-0.02em;
+}
+.hero__sub{ margin-top:1.5rem; max-width:46ch; color:var(--grey-400); font-size:clamp(0.98rem,1.4vw,1.12rem); line-height:1.55; }
+.hero__bottom{ display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:1.5rem; color:var(--grey-500); }
+.hero__meta{ display:flex; gap:clamp(1.5rem,4vw,4rem); flex-wrap:wrap; }
+.hero__meta div span{ display:block; }
+.hero__meta .k{ color:var(--grey-600); margin-bottom:0.4rem; }
+.hero__meta .v{ color:var(--paper); font-family:var(--mono); font-size:0.78rem; letter-spacing:0.06em; font-variant-numeric:tabular-nums; }
+.scrollcue{ display:flex; align-items:center; gap:0.7rem; color:var(--grey-500); }
+.scrollcue__line{ width:1px; height:36px; background:linear-gradient(var(--grey-500),transparent); position:relative; overflow:hidden; }
+.scrollcue__line::after{ content:""; position:absolute; top:-50%; left:0; width:1px; height:50%; background:var(--paper); animation:drop 2.4s var(--ease) infinite; }
+@keyframes drop{ 0%{ transform:translateY(-100%);} 60%,100%{ transform:translateY(300%);} }
+@media (prefers-reduced-motion: reduce){ .scrollcue__line::after{ animation:none; } }
+
+/* ============================================================
+   2 · ORIENTATION
+   ============================================================ */
+.section{ padding-top:clamp(6rem,12vh,11rem); padding-bottom:clamp(6rem,12vh,11rem); }
+.eyebrow{ display:flex; align-items:center; gap:1rem; color:var(--grey-500); margin-bottom:clamp(2.5rem,6vh,4.5rem); }
+.eyebrow .rule{ flex:1; height:1px; background:var(--line-light); max-width:200px; }
+.panel--dark .eyebrow .rule{ background:var(--line-dark); }
+.eyebrow .idx{ color:inherit; }
+
+.lede{
+  font-size:clamp(1.7rem,4vw,3.4rem); font-weight:400; line-height:1.18; letter-spacing:-0.025em;
+  max-width:24ch;
+}
+.lede .muted{ color:var(--grey-500); }
+.orient__grid{ display:grid; grid-template-columns:1fr; gap:clamp(2rem,5vw,4rem); margin-top:clamp(3rem,7vh,5rem); }
+@media (min-width:860px){ .orient__grid{ grid-template-columns:1.4fr 1fr; } }
+.orient__body{ color:var(--grey-600); font-size:1.06rem; line-height:1.65; max-width:48ch; }
+.orient__body p+p{ margin-top:1.25rem; }
+.orient__facts{ border-top:1px solid var(--line-light); }
+.factrow{ display:flex; justify-content:space-between; gap:1rem; padding:1.1rem 0; border-bottom:1px solid var(--line-light); }
+.factrow .k{ color:var(--grey-500); }
+.factrow .v{ font-family:var(--mono); font-size:0.82rem; letter-spacing:0.04em; text-align:right; }
+
+/* ============================================================
+   3 · CAPABILITIES / understanding
+   ============================================================ */
+.cap__head{ display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:1.5rem; margin-bottom:clamp(2.5rem,5vh,4rem); }
+.cap__title{ font-size:clamp(2rem,4.5vw,3.6rem); font-weight:500; letter-spacing:-0.03em; line-height:1.02; }
+.cap__note{ color:var(--grey-500); max-width:30ch; font-size:0.95rem; line-height:1.55; }
+.index{ border-top:1px solid var(--line-light); }
+.row{
+  display:grid; grid-template-columns:auto 1fr; gap:1.5rem;
+  padding:clamp(1.6rem,3.5vh,2.6rem) 0; border-bottom:1px solid var(--line-light);
+  position:relative; transition:padding-left 0.5s var(--ease);
+}
+.row::before{
+  content:""; position:absolute; left:-100vw; right:-100vw; top:0; bottom:0; z-index:0;
+  background:var(--ink); transform:scaleY(0); transform-origin:bottom; opacity:0;
+  transition:transform 0.55s var(--ease), opacity 0.4s var(--ease);
+}
+.row > *{ position:relative; z-index:1; transition:color 0.45s var(--ease); }
+.row__num{ font-family:var(--mono); font-size:0.72rem; letter-spacing:0.12em; color:var(--grey-400); padding-top:0.5rem; }
+.row__main{ display:grid; grid-template-columns:1fr; gap:0.8rem; }
+@media (min-width:860px){ .row__main{ grid-template-columns:1fr 1.3fr; gap:3rem; align-items:start; } }
+.row__name{ font-size:clamp(1.5rem,3vw,2.4rem); font-weight:500; letter-spacing:-0.025em; line-height:1.05; }
+.row__desc{ color:var(--grey-600); font-size:1.02rem; line-height:1.6; max-width:46ch; }
+.row__arrow{ font-family:var(--mono); opacity:0; transform:translateX(-6px); transition:opacity 0.4s var(--ease), transform 0.4s var(--ease); align-self:center; }
+@media(hover:hover){
+  .row:hover{ padding-left:clamp(0.75rem,2vw,1.75rem); }
+  .row:hover::before{ transform:scaleY(1); opacity:1; }
+  .row:hover .row__num{ color:var(--grey-400); }
+  .row:hover .row__name,.row:hover .row__desc{ color:var(--paper); }
+  .row:hover .row__arrow{ opacity:0.6; transform:translateX(0); }
+}
+
+/* ============================================================
+   4 · OPERATIONAL MODEL / confidence  (dark machine room)
+   ============================================================ */
+.model__lede{ font-size:clamp(1.6rem,3.6vw,3rem); font-weight:400; letter-spacing:-0.025em; line-height:1.2; max-width:22ch; }
+.steps{ margin-top:clamp(3rem,7vh,5.5rem); display:grid; grid-template-columns:1fr; border-top:1px solid var(--line-dark); }
+@media(min-width:760px){ .steps{ grid-template-columns:repeat(5,1fr); border-top:0; } }
+.step{ padding:1.8rem 0; border-bottom:1px solid var(--line-dark); }
+@media(min-width:760px){ .step{ border-bottom:0; border-left:1px solid var(--line-dark); padding:0 1.4rem; min-height:200px; display:flex; flex-direction:column; } }
+@media(min-width:760px){ .step:first-child{ border-left:0; padding-left:0; } }
+.step__num{ font-family:var(--mono); font-size:0.7rem; letter-spacing:0.14em; color:var(--grey-500); }
+.step__name{ font-size:1.45rem; font-weight:500; letter-spacing:-0.02em; margin-top:auto; padding-top:2.2rem; }
+.step__desc{ color:var(--grey-500); font-size:0.92rem; line-height:1.55; margin-top:0.8rem; }
+
+.specs{ margin-top:clamp(3.5rem,8vh,6rem); display:grid; grid-template-columns:1fr; gap:0; border-top:1px solid var(--line-dark); }
+@media(min-width:760px){ .specs{ grid-template-columns:repeat(3,1fr); } }
+.spec{ padding:2rem 0; border-bottom:1px solid var(--line-dark); }
+@media(min-width:760px){ .spec{ border-bottom:0; border-left:1px solid var(--line-dark); padding:2.4rem 2rem 2.4rem 2rem; } .spec:first-child{ border-left:0; padding-left:0; } }
+.spec__v{ font-size:clamp(2.2rem,4vw,3.2rem); font-weight:500; letter-spacing:-0.03em; line-height:1; }
+.spec__k{ color:var(--grey-500); margin-top:1rem; font-size:0.95rem; line-height:1.5; max-width:30ch; }
+
+/* ============================================================
+   5 · INFRASTRUCTURE / vision
+   ============================================================ */
+.vision__lede{
+  font-size:clamp(2rem,5.2vw,4.6rem); font-weight:400; letter-spacing:-0.03em; line-height:1.12; max-width:18ch;
+}
+.vision__lede em{ font-style:normal; color:var(--grey-500); }
+.vision__cols{ margin-top:clamp(3rem,7vh,5rem); display:grid; grid-template-columns:1fr; gap:2.5rem; }
+@media(min-width:860px){ .vision__cols{ grid-template-columns:repeat(3,1fr); gap:clamp(2rem,4vw,4rem); } }
+.vision__col h3{ font-family:var(--mono); font-size:0.7rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--grey-500); padding-bottom:1rem; border-top:1px solid var(--line-light); padding-top:1rem; }
+.vision__col p{ color:var(--grey-600); font-size:1.02rem; line-height:1.62; }
+
+/* ============================================================
+   6 · CONTACT + footer
+   ============================================================ */
+.contact{ padding-top:clamp(7rem,14vh,12rem); }
+.contact__lede{ font-size:clamp(2.4rem,6.5vw,6rem); font-weight:500; letter-spacing:-0.035em; line-height:0.98; }
+.contact__lede a{ position:relative; }
+.contact__lede a::after{ content:""; position:absolute; left:0; bottom:0.08em; height:2px; width:100%; background:var(--metal); transform:scaleX(0); transform-origin:left; transition:transform 0.5s var(--ease); }
+.contact__lede a:hover::after{ transform:scaleX(1); }
+.contact__grid{ margin-top:clamp(4rem,9vh,7rem); display:grid; grid-template-columns:1fr; gap:0; border-top:1px solid var(--line-dark); }
+@media(min-width:760px){ .contact__grid{ grid-template-columns:repeat(2,1fr); } }
+@media(min-width:1100px){ .contact__grid{ grid-template-columns:repeat(4,1fr); } }
+.chan{ padding:2rem 0; border-bottom:1px solid var(--line-dark); }
+@media(min-width:760px){ .chan{ border-bottom:0; border-left:1px solid var(--line-dark); padding:2.4rem 1.8rem; } .chan:first-child{ border-left:0; padding-left:0; } }
+@media(min-width:1100px){ .chan:nth-child(1){ border-left:0; padding-left:0; } }
+.chan__k{ font-family:var(--mono); font-size:0.7rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--grey-500); }
+.chan__v{ font-size:1.15rem; font-weight:500; margin-top:1.2rem; letter-spacing:-0.01em; }
+.chan__v a{ position:relative; }
+.chan__v a::after{ content:""; position:absolute; left:0; bottom:-2px; height:1px; width:0; background:currentColor; transition:width 0.4s var(--ease); }
+.chan__v a:hover::after{ width:100%; }
+.chan__d{ color:var(--grey-500); font-size:0.9rem; line-height:1.5; margin-top:0.6rem; }
+
+.footer{ padding-top:clamp(5rem,10vh,8rem); padding-bottom:2.5rem; }
+.footer__top{ display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:2rem; }
+.footer__mark{ font-weight:600; font-size:clamp(3rem,12vw,9rem); letter-spacing:-0.03em; line-height:0.8; }
+.footer__meta{ text-align:right; color:var(--grey-500); display:flex; flex-direction:column; gap:0.5rem; }
+.footer__meta .mono{ color:var(--grey-500); }
+.footer__bar{ margin-top:clamp(3rem,6vh,4.5rem); padding-top:1.5rem; border-top:1px solid var(--line-dark); display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; color:var(--grey-600); }
+.footer__bar .mono{ color:var(--grey-600); }
+
+/* ============================================================
+   reveal animation
+   ============================================================ */
+.reveal{ opacity:0; transform:translateY(18px); transition:opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out); }
+.reveal.in{ opacity:1; transform:none; }
+.reveal[data-d="1"]{ transition-delay:0.08s; }
+.reveal[data-d="2"]{ transition-delay:0.16s; }
+.reveal[data-d="3"]{ transition-delay:0.24s; }
+.reveal[data-d="4"]{ transition-delay:0.32s; }
+.reveal[data-d="5"]{ transition-delay:0.40s; }
+@media (prefers-reduced-motion: reduce){
+  .reveal{ opacity:1; transform:none; transition:none; }
+  .veil{ display:none; }
+}
+
+/* hero entrance */
+.h-anim{ opacity:0; transform:translateY(20px); }
+body.loaded .h-anim{ opacity:1; transform:none; transition:opacity 1s var(--ease-out), transform 1s var(--ease-out); }
+body.loaded .h-anim[data-d="1"]{ transition-delay:0.45s; }
+body.loaded .h-anim[data-d="2"]{ transition-delay:0.6s; }
+body.loaded .h-anim[data-d="3"]{ transition-delay:0.78s; }
+body.loaded .h-anim[data-d="4"]{ transition-delay:0.95s; }
+@media (prefers-reduced-motion: reduce){ .h-anim{ opacity:1 !important; transform:none !important; } }
+
+@media (max-width:760px){
+  .nav__links{ display:none; }
+  .nav__toggle{ display:block; }
+  .hero{ padding-top:6.5rem; }
+  .hero__sub{ margin-top:1.75rem; }
+  .section{ padding-top:clamp(6.5rem,13vh,9rem); padding-bottom:clamp(6.5rem,13vh,9rem); }
+  .eyebrow{ margin-bottom:clamp(3rem,8vh,4rem); }
+  .steps{ border-top:1px solid var(--line-dark); }
+  .step{ padding:2.75rem 0 3rem; display:grid; grid-template-columns:3rem 1fr; column-gap:1.25rem; align-items:start; }
+  .step:last-child{ border-bottom:0; }
+  .step__num{ grid-column:1; grid-row:1; padding-top:0.55rem; }
+  .step__name{ grid-column:2; grid-row:1; margin-top:0; padding-top:0; font-size:1.65rem; line-height:1.1; }
+  .step__desc{ grid-column:2; grid-row:2; margin-top:1.1rem; font-size:1.02rem; line-height:1.62; max-width:40ch; }
+  .card{ padding:2.6rem 0 2.8rem; gap:1.25rem; }
+}
+</style>
+</head>
+<body>
+<a href="#main" class="skip">Skip to content</a>
+
+<!-- loading veil -->
+<div class="veil" aria-hidden="true">
+  <span class="veil__mark">SWIG</span>
+  <span class="veil__mark">LONDON · OPERATIONAL</span>
+  <span class="veil__bar"></span>
+</div>
+
+<!-- datum index -->
+<nav class="datum" aria-label="Section index">
+  <a class="datum__item" href="#orientation" data-sec aria-label="Overview"><span class="datum__num" aria-hidden="true">01</span><span class="datum__tick" aria-hidden="true"></span></a>
+  <a class="datum__item" href="#capabilities" data-sec aria-label="Capabilities"><span class="datum__num" aria-hidden="true">02</span><span class="datum__tick" aria-hidden="true"></span></a>
+  <a class="datum__item" href="#operations" data-sec aria-label="Operations"><span class="datum__num" aria-hidden="true">03</span><span class="datum__tick" aria-hidden="true"></span></a>
+  <a class="datum__item" href="#infrastructure" data-sec aria-label="Infrastructure"><span class="datum__num" aria-hidden="true">04</span><span class="datum__tick" aria-hidden="true"></span></a>
+  <a class="datum__item" href="#contact" data-sec aria-label="Enquiries"><span class="datum__num" aria-hidden="true">05</span><span class="datum__tick" aria-hidden="true"></span></a>
+</nav>
+
+<!-- nav -->
+<header class="nav" id="nav">
+  <a class="nav__brand" href="#top" aria-label="SWIG, home"><span class="nav__dot" aria-hidden="true"></span>SWIG</a>
+  <nav class="nav__links" aria-label="Primary">
+    <a class="nav__link" href="#orientation">Overview</a>
+    <a class="nav__link" href="#capabilities">Capabilities</a>
+    <a class="nav__link" href="#operations">Operations</a>
+    <a class="nav__link" href="#infrastructure">Infrastructure</a>
+    <a class="nav__tel" href="tel:02080874616">020 8087 4616</a>
+    <a class="nav__cta" href="#contact">Enquire now</a>
+  </nav>
+  <button class="nav__toggle" id="toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+</header>
+
+<div class="menu" id="menu" aria-hidden="true">
+  <span class="mono">Index</span>
+  <a href="#orientation">Overview</a>
+  <a href="#capabilities">Capabilities</a>
+  <a href="#operations">Operations</a>
+  <a href="#infrastructure">Infrastructure</a>
+  <a href="#contact">Enquire now</a>
+  <a class="menu__tel mono" href="tel:02080874616">020 8087 4616</a>
+</div>
+
+<main id="main">
+
+<!-- 1 · ARRIVAL -->
+<section class="panel panel--dark" id="top" data-nav="dark">
+  <div class="wrap hero">
+    <div class="hero__top h-anim" data-d="1">
+      <span class="mono hero__status"><span class="live" aria-hidden="true"></span>Status · Operational</span>
+      <span class="mono">Working across the UK</span>
+    </div>
+
+    <div class="hero__center">
+      <h1 class="wordmark h-anim" data-d="2">SWIG</h1>
+      <p class="hero__statement h-anim" data-d="3">We run the logistics behind events and hospitality, so the day goes to plan.</p>
+      <p class="hero__sub h-anim" data-d="4">We supply the kit, build the bars and run the crews for events, venues, festivals and hospitality across the UK. It arrives ready, set up right and on time.</p>
+      <a class="opcta h-anim" data-d="4" href="#contact"><span class="opcta__txt">Enquire now</span><span class="opcta__arrow" aria-hidden="true">→</span></a>
+    </div>
+
+    <div class="hero__bottom h-anim" data-d="4">
+      <div class="hero__meta">
+        <div><span class="mono k">Headquarters</span><span class="v">Shoreditch, London</span></div>
+        <div><span class="mono k">what3words</span><a class="v hero__w3w" href="https://what3words.com/trout.forms.flats" target="_blank" rel="noreferrer">///trout.forms.flats</a></div>
+        <div><span class="mono k">London time</span><span class="v" id="clock">--:--:--</span></div>
+      </div>
+      <a class="scrollcue mono" href="#orientation" aria-label="Scroll to overview"><span class="scrollcue__line" aria-hidden="true"></span>Scroll</a>
+    </div>
+  </div>
+</section>
+
+<!-- 2 · ORIENTATION -->
+<section class="panel panel--light section" id="orientation" data-nav="light" data-sec-target>
+  <div class="wrap">
+    <div class="eyebrow mono reveal"><span class="idx">01</span> Overview <span class="rule" aria-hidden="true"></span> <span>Why we exist</span></div>
+    <h2 class="lede reveal" data-d="1">Most of what makes an event work happens before anyone arrives. SWIG handles that part. <span class="muted">By the time the guests walk in, the hard part is done.</span></h2>
+
+    <div class="orient__grid">
+      <div class="orient__body reveal" data-d="2">
+        <p>Every event runs on work nobody sees. The kit that turns up on time, the bar plumbed before doors, the crew that knows the running order. When it goes well, no one notices. When it goes wrong, everyone does.</p>
+        <p>Usually that lands on whoever signed the contract. We take it off their plate. We keep our own kit, vehicles and crew ready, and bring them in when a venue, a festival or a production needs more than it can handle on its own. Anywhere in the UK.</p>
+      </div>
+      <div class="orient__facts reveal" data-d="3">
+        <div class="factrow"><span class="k">What we do</span><span class="v">Hospitality &amp; event logistics</span></div>
+        <div class="factrow"><span class="k">Where</span><span class="v">Across the UK</span></div>
+        <div class="factrow"><span class="k">Base</span><span class="v">Shoreditch, London</span></div>
+        <div class="factrow"><span class="k">Kit</span><span class="v">Our own, kept ready</span></div>
+        <div class="factrow"><span class="k">Size of job</span><span class="v">One bar to a full season</span></div>
+        <div class="factrow"><span class="k">Reply</span><span class="v">Within minutes</span></div>
+      </div>
+    </div>
+    <a class="opcta reveal" data-d="3" href="#contact"><span class="opcta__txt">Tell us about your event</span><span class="opcta__arrow" aria-hidden="true">→</span></a>
+  </div>
+</section>
+
+<!-- 3 · CAPABILITIES -->
+<section class="panel panel--light section" id="capabilities" data-nav="light" data-sec-target style="padding-top:0">
+  <div class="wrap">
+    <div class="cap__head">
+      <div>
+        <div class="eyebrow mono reveal"><span class="idx">02</span> Capabilities <span class="rule" aria-hidden="true"></span> <span>What we do</span></div>
+        <h2 class="cap__title reveal" data-d="1">Six parts of the job,<br>one team running them.</h2>
+      </div>
+      <p class="cap__note reveal" data-d="2">Hire us for one bar, or for everything behind a season of events. Either way it's one team, one standard and one number to call.</p>
+    </div>
+
+    <div class="index">
+      <a class="row reveal" href="#contact" aria-label="Enquire about Hospitality Logistics">
+        <span class="row__num">01</span>
+        <span class="row__main">
+          <span class="row__name">Hospitality Logistics</span>
+          <span class="row__desc">Getting equipment and stock where it needs to be, on time and accounted for. We move it, store it and track it, so nothing turns up late or holds up service.</span>
+        </span>
+        <span class="row__arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="row reveal" href="#contact" aria-label="Enquire about Event Builds">
+        <span class="row__num">02</span>
+        <span class="row__main">
+          <span class="row__name">Event Builds</span>
+          <span class="row__desc">Bars, service stations and temporary structures, built to suit the site and the running order. A corporate party, a festival or a stadium. In before doors, out after the last guest.</span>
+        </span>
+        <span class="row__arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="row reveal" href="#contact" aria-label="Enquire about Equipment &amp; Setup">
+        <span class="row__num">03</span>
+        <span class="row__main">
+          <span class="row__name">Equipment &amp; Setup</span>
+          <span class="row__desc">Fridges, dispense, glassware and service kit, delivered, installed and tested where you need it. It works before we hand it over, not when the first guests arrive.</span>
+        </span>
+        <span class="row__arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="row reveal" href="#contact" aria-label="Enquire about Bar Systems">
+        <span class="row__num">04</span>
+        <span class="row__main">
+          <span class="row__name">Bar Systems</span>
+          <span class="row__desc">Complete bars, designed, plumbed and pouring from the first order. Built to keep up when the queue is three deep.</span>
+        </span>
+        <span class="row__arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="row reveal" href="#contact" aria-label="Enquire about On-site Crew">
+        <span class="row__num">05</span>
+        <span class="row__main">
+          <span class="row__name">On-site Crew</span>
+          <span class="row__desc">Trained crew and supervisors on the floor, running the night so your people don't have to. We stay until everything's packed away.</span>
+        </span>
+        <span class="row__arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="row reveal" href="#contact" aria-label="Enquire about Rapid Response">
+        <span class="row__num">06</span>
+        <span class="row__main">
+          <span class="row__name">Rapid Response</span>
+          <span class="row__desc">When something breaks or runs low mid-event, we move fast to fix it or get more to you. One fault shouldn't close a bar. With us it doesn't.</span>
+        </span>
+        <span class="row__arrow" aria-hidden="true">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- 4 · OPERATIONS / confidence -->
+<section class="panel panel--dark section" id="operations" data-nav="dark" data-sec-target>
+  <div class="wrap">
+    <div class="eyebrow mono reveal"><span class="idx">03</span> Operations <span class="rule" aria-hidden="true"></span> <span>How we work</span></div>
+    <h2 class="model__lede reveal" data-d="1">Every job runs the same way, from the first brief to the final pack down. Planned properly, written down, with one person responsible.</h2>
+
+    <div class="steps">
+      <div class="step reveal" data-d="1"><span class="step__num">01</span><span class="step__name">Brief</span><span class="step__desc">We work out what you need, where, and by when, before anything moves. One person to deal with, everything agreed in writing.</span></div>
+      <div class="step reveal" data-d="2"><span class="step__num">02</span><span class="step__name">Plan</span><span class="step__desc">We schedule the kit, the crews and the deliveries around your running order, and build in cover for the moments that can't go wrong.</span></div>
+      <div class="step reveal" data-d="3"><span class="step__num">03</span><span class="step__name">Set up</span><span class="step__desc">We set it all up and test it before doors open. Signed off before we hand it over.</span></div>
+      <div class="step reveal" data-d="4"><span class="step__num">04</span><span class="step__name">Run</span><span class="step__desc">Our crew runs the service on the night, led by one supervisor who owns the floor and keeps it right.</span></div>
+      <div class="step reveal" data-d="5"><span class="step__num">05</span><span class="step__name">Pack down</span><span class="step__desc">We take it down, clear the site and send you an honest account of what got used. You get the space back exactly as we found it.</span></div>
+    </div>
+
+    <div class="specs">
+      <div class="spec reveal" data-d="1"><div class="spec__v">Minutes</div><div class="spec__k">We reply in minutes, not days.</div></div>
+      <div class="spec reveal" data-d="2"><div class="spec__v">National</div><div class="spec__k">We work right across the UK, from our base in Shoreditch, London.</div></div>
+      <div class="spec reveal" data-d="3"><div class="spec__v">Ready</div><div class="spec__k">Our own equipment, vehicles and crews, ready when you are.</div></div>
+    </div>
+    <a class="opcta reveal" href="#contact"><span class="opcta__txt">Plan your event</span><span class="opcta__arrow" aria-hidden="true">→</span></a>
+  </div>
+</section>
+
+<!-- 5 · INFRASTRUCTURE / vision -->
+<section class="panel panel--light section" id="infrastructure" data-nav="light" data-sec-target>
+  <div class="wrap">
+    <div class="eyebrow mono reveal"><span class="idx">04</span> Infrastructure <span class="rule" aria-hidden="true"></span> <span>The long view</span></div>
+    <h2 class="vision__lede reveal" data-d="1">If you're planning years ahead, you want a supplier who is too. <em>So we keep putting money into our own kit, vehicles and crews.</em></h2>
+
+    <div class="vision__cols">
+      <div class="vision__col reveal" data-d="1">
+        <h3>What we're doing</h3>
+        <p>We're building up our own equipment, vehicles, workshop and crew, and looking after them properly, instead of hiring in job by job.</p>
+      </div>
+      <div class="vision__col reveal" data-d="2">
+        <h3>Why it matters</h3>
+        <p>When you're planning a season of events, you want to know your supplier will still be standing, with the kit and the people, when the day comes.</p>
+      </div>
+      <div class="vision__col reveal" data-d="3">
+        <h3>What you get</h3>
+        <p>A team you can rely on year after year, not one scrambling each time. The kind of supplier you can build your plans around.</p>
+      </div>
+    </div>
+    <a class="opcta reveal" data-d="3" href="#contact"><span class="opcta__txt">Tell us what you need</span><span class="opcta__arrow" aria-hidden="true">→</span></a>
+  </div>
+</section>
+
+<!-- 6 · CONTACT -->
+<section class="panel panel--dark section contact" id="contact" data-nav="dark" data-sec-target>
+  <div class="wrap">
+    <div class="eyebrow mono reveal"><span class="idx">05</span> Enquiries <span class="rule" aria-hidden="true"></span> <span>Get in touch</span></div>
+    <h2 class="contact__lede reveal" data-d="1">Tell us what you're planning.</h2>
+    <p class="contact__sub reveal" data-d="2">Send us the date, the place and roughly what you need. We'll come back quickly with how we'd run it, whether that's one bar or a full season. Happy to talk early, before anything's fixed.</p>
+    <a class="contact__call reveal" data-d="2" href="tel:02080874616"><span class="mono contact__call-k">Call</span><span class="contact__call-num">020 8087 4616</span></a>
+
+    <div class="cards">
+      <article class="card reveal" data-d="1"><div class="card__k mono">Hello</div><p class="card__d">Questions, introductions or not sure where to start.</p><a class="card__cta" href="mailto:hello@swig.info?subject=Website%20enquiry"><span class="card__cta-txt">Say hello</span><span class="card__cta-arrow" aria-hidden="true">&rarr;</span></a></article>
+      <article class="card reveal" data-d="2"><div class="card__k mono">Bookings</div><p class="card__d">Planning an event, or need crew and kit on site.</p><a class="card__cta" href="mailto:bookings@swig.info?subject=Event%20enquiry"><span class="card__cta-txt">Speak to bookings</span><span class="card__cta-arrow" aria-hidden="true">&rarr;</span></a></article>
+      <article class="card reveal" data-d="3"><div class="card__k mono">Accounts</div><p class="card__d">Invoices, payments and finance queries.</p><a class="card__cta" href="mailto:accounts@swig.info?subject=Accounts%20enquiry"><span class="card__cta-txt">Speak to accounts</span><span class="card__cta-arrow" aria-hidden="true">&rarr;</span></a></article>
+      <article class="card reveal" data-d="4"><div class="card__k mono">Director</div><p class="card__d">Prefer to skip the queue? Speak directly with Ben about partnerships or significant opportunities.</p><a class="card__cta" href="mailto:ben@swig.info?subject=For%20Ben"><span class="card__cta-txt">Speak directly with Ben</span><span class="card__cta-arrow" aria-hidden="true">&rarr;</span></a></article>
+    </div>
+  </div>
+
+  <!-- footer -->
+  <footer class="panel--dark footer" role="contentinfo">
+    <div class="wrap">
+      <div class="footer__top">
+        <div class="footer__mark reveal">SWIG</div>
+        <div class="footer__meta reveal" data-d="1">
+          <span class="mono">SWIG Studio Ltd</span>
+          <span class="mono">Working across the UK</span>
+          <a class="mono footer__tel" href="tel:02080874616">020 8087 4616</a>
+          <span class="mono">swig.info</span>
+        </div>
+      </div>
+      <div class="footer__bar">
+        <span class="mono">© 2026 SWIG Studio Ltd · Company No. 17267035 · Registered in England &amp; Wales</span>
+        <span class="mono">Shoreditch, London</span>
+      </div>
+    </div>
+  </footer>
+</section>
+
+</main>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* load */
+  window.addEventListener('load', function(){
+    requestAnimationFrame(function(){ document.body.classList.add('loaded'); });
+  });
+  // safety: ensure loaded even if 'load' already fired
+  setTimeout(function(){ document.body.classList.add('loaded'); }, 1200);
+
+  /* live London clock */
+  var clock = document.getElementById('clock');
+  function tick(){
+    try{
+      var parts = new Intl.DateTimeFormat('en-GB',{ timeZone:'Europe/London', hour:'2-digit', minute:'2-digit', second:'2-digit', hour12:false, timeZoneName:'short' }).formatToParts(new Date());
+      var get = function(t){ var p = parts.find(function(x){return x.type===t;}); return p ? p.value : ''; };
+      var hms = get('hour')+':'+get('minute')+':'+get('second');
+      var zone = get('timeZoneName');
+      if(clock) clock.textContent = zone ? (hms + ' ' + zone) : hms;
+    }catch(e){ if(clock) clock.textContent = ''; }
+  }
+  tick(); setInterval(tick, 1000);
+
+  /* nav scroll state + colour per panel */
+  var nav = document.getElementById('nav');
+  var panels = Array.prototype.slice.call(document.querySelectorAll('[data-nav]'));
+  function onScroll(){
+    if(window.scrollY > 24) nav.classList.add('is-stuck'); else nav.classList.remove('is-stuck');
+    // determine panel under the nav line
+    var line = 64, current = 'dark';
+    for(var i=0;i<panels.length;i++){
+      var r = panels[i].getBoundingClientRect();
+      if(r.top <= line && r.bottom > line){ current = panels[i].getAttribute('data-nav'); }
+    }
+    nav.classList.toggle('is-light', current === 'light');
+  }
+  window.addEventListener('scroll', onScroll, { passive:true });
+  onScroll();
+
+  /* reveal on scroll */
+  var reveals = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window && !reduce){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold:0.12, rootMargin:'0px 0px -8% 0px' });
+    reveals.forEach(function(el){ io.observe(el); });
+  } else {
+    reveals.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  /* datum active index */
+  var datumItems = document.querySelectorAll('.datum__item');
+  var targets = document.querySelectorAll('[data-sec-target]');
+  if('IntersectionObserver' in window){
+    var dio = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          var idx = Array.prototype.indexOf.call(targets, e.target);
+          datumItems.forEach(function(d,i){
+            var active = i===idx;
+            d.classList.toggle('is-active', active);
+            if(active){ d.setAttribute('aria-current','true'); } else { d.removeAttribute('aria-current'); }
+          });
+        }
+      });
+    }, { threshold:0.5 });
+    targets.forEach(function(t){ dio.observe(t); });
+  }
+
+  /* mobile menu */
+  var toggle = document.getElementById('toggle');
+  var menu = document.getElementById('menu');
+  function setMenu(open){
+    menu.classList.toggle('is-open', open);
+    toggle.classList.toggle('is-open', open);
+    menu.setAttribute('aria-hidden', open ? 'false':'true');
+    menu.inert = !open;
+    toggle.setAttribute('aria-expanded', open ? 'true':'false');
+    toggle.setAttribute('aria-label', open ? 'Close menu':'Open menu');
+    document.body.style.overflow = open ? 'hidden':'';
+  }
+  menu.inert = true;
+  toggle.addEventListener('click', function(){ setMenu(!menu.classList.contains('is-open')); });
+  menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ setMenu(false); }); });
+  window.addEventListener('keydown', function(e){ if(e.key === 'Escape' && menu.classList.contains('is-open')) setMenu(false); });
+})();
+</script>
+</body>
+</html>
