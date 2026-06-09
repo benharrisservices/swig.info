@@ -55,7 +55,9 @@ export default function Navigation() {
       <header className="nav" id="nav">
         <a className="nav__brand" href="#top" aria-label="SWIG, home">
           <span className="nav__dot" aria-hidden="true" />
-          <Wordmark />
+          <span className="nav__brand-mark">
+            <Wordmark />
+          </span>
         </a>
         <nav className="nav__links" aria-label="Primary">
           {navItems.map((item) => (
@@ -67,7 +69,7 @@ export default function Navigation() {
             {site.phone.display}
           </a>
           <a className="nav__cta" href="#contact">
-            Enquire now
+            Let&apos;s talk
           </a>
         </nav>
         <button
@@ -95,7 +97,7 @@ export default function Navigation() {
           </a>
         ))}
         <a href="#contact" onClick={() => setOpen(false)}>
-          Enquire now
+          Let&apos;s talk
         </a>
         <a className="menu__tel mono" href={site.phone.href}>
           {site.phone.display}

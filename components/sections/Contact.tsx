@@ -1,8 +1,10 @@
 import { cards, site } from "@/lib/site";
 import Wordmark from "@/components/Wordmark";
 
-const mailto = (email: string, subject: string) =>
-  `mailto:${email}?subject=${encodeURIComponent(subject)}`;
+const mailto = (email: string, subject: string, body?: string) =>
+  `mailto:${email}?subject=${encodeURIComponent(subject)}${
+    body ? `&body=${encodeURIComponent(body)}` : ""
+  }`;
 
 export default function Contact() {
   return (
@@ -16,15 +18,14 @@ export default function Contact() {
         <div className="eyebrow mono reveal">
           <span>05</span> Enquiries
           <span className="rule" aria-hidden="true" />
-          <span>Get in touch</span>
+          <span>Start here</span>
         </div>
         <h2 className="contact__lede reveal" data-d="1">
           Tell us what you're planning.
         </h2>
         <p className="contact__sub reveal" data-d="2">
-          Send us the date, the place and roughly what you need. We'll come back
-          quickly with how we'd run it, whether that's one bar or a full season.
-          Happy to talk early, before anything's fixed.
+          Send whatever you have. A date, a venue, half a plan. We'll come
+          back quickly with how we'd run it.
         </p>
         <a className="contact__call reveal" data-d="2" href={site.phone.href}>
           <span className="mono contact__call-k">Call</span>
@@ -33,16 +34,43 @@ export default function Contact() {
 
         <div className="cards">
           {cards.map((c, i) => (
-            <article className="card reveal" data-d={i + 1} key={c.k}>
-              <div className="card__k mono">{c.k}</div>
+            <a
+              className="card reveal"
+              data-d={i + 1}
+              key={c.k}
+              href={mailto(
+                c.email,
+                c.subject,
+                c.k === "Hello" ? "Hello SWIG,\n\n" : undefined
+              )}
+            >
+              <div className="card__head">
+                <span className="card__k mono">{c.k}</span>
+                <svg
+                  className="card__bubble"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 14 14"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M1.5 2.5h11v7h-6l-3 2.8v-2.8h-2z"
+                    stroke="currentColor"
+                    strokeWidth="1.1"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </div>
+              <span className="card__role">{c.role}</span>
               <p className="card__d">{c.d}</p>
-              <a className="card__cta" href={mailto(c.email, c.subject)}>
+              <span className="card__cta">
                 <span className="card__cta-txt">{c.cta}</span>
                 <span className="card__cta-arrow" aria-hidden="true">
                   →
                 </span>
-              </a>
-            </article>
+              </span>
+            </a>
           ))}
         </div>
       </div>

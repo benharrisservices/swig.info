@@ -28,74 +28,78 @@ export const capabilities = [
   {
     num: "01",
     name: "Hospitality Logistics",
-    desc: "Getting equipment and stock where it needs to be, on time and accounted for. We move it, store it and track it, so nothing turns up late or holds up service.",
+    desc: "The right equipment. The right place. The right time. Accounted for.",
   },
   {
     num: "02",
     name: "Event Builds",
-    desc: "Bars, service stations and temporary structures, built to suit the site and the running order. A corporate party, a festival or a stadium. In before doors, out after the last guest.",
+    desc: "Built before opening. Gone after closing. No surprises.",
   },
   {
     num: "03",
     name: "Equipment & Setup",
-    desc: "Fridges, dispense, glassware and service kit, delivered, installed and tested where you need it. It works before we hand it over, not when the first guests arrive.",
+    desc: "Installed. Tested. Ready before anyone arrives.",
   },
   {
     num: "04",
     name: "Bar Systems",
-    desc: "Complete bars, designed, plumbed and pouring from the first order. Built to keep up when the queue is three deep.",
+    desc: "Built to pour from the first order. Designed to keep service moving.",
   },
   {
     num: "05",
-    name: "On-site Crew",
-    desc: "Trained crew and supervisors on the floor, running the night so your people don't have to. We stay until everything's packed away.",
+    name: "Event Staffing",
+    desc: "Experienced people. One supervisor. One standard.",
   },
   {
     num: "06",
     name: "Rapid Response",
-    desc: "When something breaks or runs low mid-event, we move fast to fix it or get more to you. One fault shouldn't close a bar. With us it doesn't.",
+    desc: "When something fails, we fix it before guests notice.",
   },
 ] as const;
 
 export const steps = [
   { num: "01", name: "Brief", desc: "We work out what you need, where, and by when, before anything moves. One person to deal with, everything agreed in writing." },
   { num: "02", name: "Plan", desc: "We schedule the kit, the crews and the deliveries around your running order, and build in cover for the moments that can't go wrong." },
-  { num: "03", name: "Set up", desc: "We set it all up and test it before doors open. Signed off before we hand it over." },
+  { num: "03", name: "Setup", desc: "We set it all up and test it before doors open. Signed off before we hand it over." },
   { num: "04", name: "Run", desc: "Our crew runs the service on the night, led by one supervisor who owns the floor and keeps it right." },
-  { num: "05", name: "Pack down", desc: "We take it down, clear the site and send you an honest account of what got used. You get the space back exactly as we found it." },
+  { num: "05", name: "Packdown", desc: "We take it down, clear the site and send you an honest account of what got used. You get the space back exactly as we found it." },
 ] as const;
 
 export const specs = [
-  { v: "Minutes", k: "We reply in minutes, not days." },
-  { v: "National", k: "We work right across the UK, from our base in Shoreditch, London." },
-  { v: "Ready", k: "Our own equipment, vehicles and crews, ready when you are." },
+  { v: "Minutes", k: "We respond in minutes, not hours. Everything we run moves at that speed." },
+  { v: "Nationwide", k: "Supporting venues and events across the United Kingdom." },
+  { v: "Ready", k: "Our equipment. Our vehicles. Our people. Ready before you need them.", live: true },
 ] as const;
 
 export const cards = [
   {
     k: "Hello",
-    d: "Questions, introductions or not sure where to start.",
+    role: "Customer support",
+    d: "Questions, introductions, anything at all.",
     cta: "Say hello",
     email: "hello@swig.info",
     subject: "Website enquiry",
   },
   {
     k: "Bookings",
-    d: "Planning an event, or need crew and kit on site.",
+    role: "Bookings team",
+    d: "Planning an event? Need crew or equipment? Start here.",
     cta: "Speak to bookings",
     email: "bookings@swig.info",
     subject: "Event enquiry",
   },
   {
     k: "Accounts",
-    d: "Invoices, payments and finance queries.",
+    role: "Accounts & finance",
+    d: "Invoices, payments, purchase orders and supplier queries.",
     cta: "Speak to accounts",
     email: "accounts@swig.info",
     subject: "Accounts enquiry",
   },
   {
     k: "Director",
-    d: "Prefer to skip the queue? Speak directly with Ben about partnerships or significant opportunities.",
+    role: "The heart of the operation",
+    d: "Large partnerships, interesting ideas, major projects. Straight to Ben.",
     cta: "Speak directly with Ben",
     email: "ben@swig.info",
     subject: "For Ben",
@@ -103,8 +107,8 @@ export const cards = [
 ] as const;
 
 export const nav = [
-  { label: "Overview", href: "#orientation" },
-  { label: "Capabilities", href: "#capabilities" },
-  { label: "Operations", href: "#operations" },
+  { label: "Inside SWIG", href: "#orientation" },
+  { label: "What we run", href: "#capabilities" },
+  { label: "How it runs", href: "#operations" },
   { label: "Infrastructure", href: "#infrastructure" },
 ] as const;

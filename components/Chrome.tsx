@@ -6,7 +6,7 @@ export function Veil() {
       <span className="veil__mark">
         <Wordmark />
       </span>
-      <span className="veil__mark">LONDON · OPERATIONAL</span>
+      <span className="veil__label mono">LONDON · OPERATIONAL</span>
       <span className="veil__bar" />
     </div>
   );

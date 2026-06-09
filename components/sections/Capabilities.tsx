@@ -15,17 +15,15 @@ export default function Capabilities() {
             <div className="eyebrow mono reveal">
               <span>02</span> Capabilities
               <span className="rule" aria-hidden="true" />
-              <span>What we do</span>
+              <span>The work</span>
             </div>
             <h2 className="cap__title reveal" data-d="1">
-              Six parts of the job,
-              <br />
-              one team running them.
+              One team.{" "}
+              <span className="muted">Six disciplines.</span>
             </h2>
           </div>
           <p className="cap__note reveal" data-d="2">
-            Hire us for one bar, or for everything behind a season of events.
-            Either way it's one team, one standard and one number to call.
+            From a single bar to nationwide operations.
           </p>
         </div>
 

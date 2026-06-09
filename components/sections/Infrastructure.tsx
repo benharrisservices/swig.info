@@ -10,19 +10,19 @@ export default function Infrastructure() {
         <div className="eyebrow mono reveal">
           <span>04</span> Infrastructure
           <span className="rule" aria-hidden="true" />
-          <span>The long view</span>
+          <span>Built to stay</span>
         </div>
         <h2 className="vision__lede reveal" data-d="1">
-          If you're planning years ahead, you want a supplier who is too.{" "}
-          <em>So we keep putting money into our own kit, vehicles and crews.</em>
+          If you&apos;re planning years ahead,{" "}
+          <span className="muted">you want a supplier who is too.</span>
         </h2>
 
         <div className="vision__cols">
           <div className="vision__col reveal" data-d="1">
             <h3>What we're doing</h3>
             <p>
-              We're building up our own equipment, vehicles, workshop and crew,
-              and looking after them properly, instead of hiring in job by job.
+              Investing continuously in world class equipment, vehicles,
+              workshop and crew. Owned and maintained by us, not hired in.
             </p>
           </div>
           <div className="vision__col reveal" data-d="2">
@@ -36,8 +36,8 @@ export default function Infrastructure() {
           <div className="vision__col reveal" data-d="3">
             <h3>What you get</h3>
             <p>
-              A team you can rely on year after year, not one scrambling each
-              time. The kind of supplier you can build your plans around.
+              A standing operation, not freelancers assembled for the day. The
+              kind of supplier you build plans around, year after year.
             </p>
           </div>
         </div>

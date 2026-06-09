@@ -12,12 +12,18 @@ export default function Operations() {
         <div className="eyebrow mono reveal">
           <span>03</span> Operations
           <span className="rule" aria-hidden="true" />
-          <span>How we work</span>
+          <span>Running order</span>
         </div>
         <h2 className="model__lede reveal" data-d="1">
-          Every job runs the same way, from the first brief to the final pack
-          down. Planned properly, written down, with one person responsible.
+          Good events aren&apos;t improvised.
         </h2>
+        <p className="model__sub reveal" data-d="2">
+          Good people. Strong systems. Equipment we maintain ourselves. Clear
+          plans, quiet execution. One purpose: the event runs perfectly.
+        </p>
+        <p className="model__kicker mono reveal" data-d="2">
+          One system · Five stages
+        </p>
 
         <div className="steps">
           {steps.map((s, i) => (
@@ -32,7 +38,12 @@ export default function Operations() {
         <div className="specs">
           {specs.map((s, i) => (
             <div className="spec reveal" data-d={i + 1} key={s.v}>
-              <div className="spec__v">{s.v}</div>
+              <div className="spec__v">
+                {s.v}
+                {"live" in s && s.live ? (
+                  <span className="spec__dot" aria-hidden="true" />
+                ) : null}
+              </div>
               <div className="spec__k">{s.k}</div>
             </div>
           ))}

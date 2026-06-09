@@ -9,12 +9,12 @@ export default function ScrollChoreography() {
     ).matches;
 
     const setLoaded = () =>
-      requestAnimationFrame(() => document.body.classList.add("loaded"));
+      window.setTimeout(() => document.body.classList.add("loaded"), 300);
     if (document.readyState === "complete") setLoaded();
     else window.addEventListener("load", setLoaded);
     const safety = window.setTimeout(
       () => document.body.classList.add("loaded"),
-      1200
+      1600
     );
 
     // reveal on scroll
