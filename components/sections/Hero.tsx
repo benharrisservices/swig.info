@@ -15,7 +15,7 @@ export default function Hero() {
             Everything before opening.
           </p>
           <p className="hero__sub h-anim" data-d="4">
-            Cocktails. Crew. Kit. Ready before doors.
+            Mobile bars. Spatial design. Ready before doors.
           </p>
           <a className="opcta h-anim" data-d="4" href="#contact">
             <span className="opcta__txt">Start an event</span>

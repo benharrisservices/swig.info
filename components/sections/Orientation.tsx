@@ -34,7 +34,7 @@ export default function Orientation() {
           <div className="orient__facts reveal" data-d="3">
             <div className="factrow">
               <span className="k">What we do</span>
-              <span className="v">Premium event bars &amp; beverage</span>
+              <span className="v">Mobile &amp; modular event bars</span>
             </div>
             <div className="factrow">
               <span className="k">Where</span>
