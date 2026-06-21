@@ -21,7 +21,7 @@ export default function Contact() {
           <span>Start here</span>
         </div>
         <h2 className="contact__lede reveal" data-d="1">
-          Tell us what you're planning.
+          Tell us about the event.
         </h2>
         <p className="contact__sub reveal" data-d="2">
           Send whatever you have. A date, a venue, half a plan. We'll come
