@@ -4,11 +4,11 @@ export const site = {
   companyNumber: "17267035",
   domain: "swig.info",
   url: "https://swig.info",
-  tagline: "Premium event bars.",
+  tagline: "Hospitality and event logistics.",
   statement:
-    "We run premium event bars — cocktails, crew and kit at the top of the industry, ready before doors open.",
+    "We design and deploy mobile, modular event bars — built around the space, styled to the event, and ready before doors.",
   description:
-    "SWIG runs premium event bars across the UK. The best cocktails on site, freshly squeezed juice, top-tier presentation and crew — ready before doors, and scaling from an intimate gathering to a fifteen-thousand-capacity build.",
+    "SWIG is a hospitality and event logistics company specialising in mobile and modular bar deployments — stylistically and spatially designed to fit the event they're part of. Ten years of bars people remember, set up on time, anywhere in the UK.",
   hq: "Shoreditch, London",
   coverage: "Working across the UK",
   phone: {
@@ -27,23 +27,23 @@ export const site = {
 export const capabilities = [
   {
     num: "01",
-    name: "Cocktail bars",
-    desc: "A serious list, built and poured by people from London's best rooms.",
+    name: "Mobile & modular bars",
+    desc: "Bars that travel and reconfigure to any space, built before doors.",
   },
   {
     num: "02",
-    name: "Crew & service",
-    desc: "Experienced people. One supervisor. One standard, first guest to last.",
+    name: "Spatial & styled",
+    desc: "Designed into the room and styled to the event, not dropped in.",
   },
   {
     num: "03",
-    name: "Beverage",
-    desc: "Freshly squeezed, properly made. The detail guests taste in the glass.",
+    name: "Cocktails & beverage",
+    desc: "A serious list, freshly squeezed, poured by people from London's best rooms.",
   },
   {
     num: "04",
-    name: "Spatial design",
-    desc: "The bar designed into the room, not dropped in. In place before doors.",
+    name: "Crew & service",
+    desc: "Experienced people. One supervisor. One standard, first guest to last.",
   },
   {
     num: "05",
