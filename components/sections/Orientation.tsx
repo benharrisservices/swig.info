@@ -20,20 +20,21 @@ export default function Orientation() {
         <div className="orient__grid">
           <div className="orient__body reveal" data-d="2">
             <p>
-              Every event runs on work nobody sees. Kit on time. Bars plumbed
-              before doors. Crew who know the running order. When it goes well,
-              no one notices. When it goes wrong, everyone does.
+              Every event runs on work nobody sees. The bar built before
+              doors. Fresh juice cut, ice in, garnish ready. Crew who know the
+              running order. When it goes well, no one notices. When it goes
+              wrong, everyone does.
             </p>
             <p>
               Usually that lands on whoever signed the contract. We take it off
-              their plate. Our kit, our vehicles, our crew, ready to go.
-              Anywhere in the UK.
+              their plate. Our bar, our kit, our crew, ready to pour. Anywhere
+              in the UK.
             </p>
           </div>
           <div className="orient__facts reveal" data-d="3">
             <div className="factrow">
               <span className="k">What we do</span>
-              <span className="v">Hospitality &amp; event logistics</span>
+              <span className="v">Premium event bars &amp; beverage</span>
             </div>
             <div className="factrow">
               <span className="k">Where</span>
@@ -66,7 +67,7 @@ export default function Orientation() {
         </a>
 
         <a className="opcta reveal" data-d="3" href="#contact">
-          <span className="opcta__txt">Talk through the logistics</span>
+          <span className="opcta__txt">Talk through the bar</span>
           <span className="opcta__arrow" aria-hidden="true">
             →
           </span>

@@ -15,15 +15,15 @@ export default function Capabilities() {
             <div className="eyebrow mono reveal">
               <span>02</span> Capabilities
               <span className="rule" aria-hidden="true" />
-              <span>The work</span>
+              <span>The bar, in full</span>
             </div>
             <h2 className="cap__title reveal" data-d="1">
-              One team.{" "}
-              <span className="muted">Six disciplines.</span>
+              One bar.{" "}
+              <span className="muted">Held to one standard.</span>
             </h2>
           </div>
           <p className="cap__note reveal" data-d="2">
-            From a single bar to nationwide operations.
+            From an intimate gathering to fifteen thousand.
           </p>
         </div>
 

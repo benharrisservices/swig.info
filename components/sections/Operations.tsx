@@ -18,8 +18,8 @@ export default function Operations() {
           Good events aren&apos;t improvised.
         </h2>
         <p className="model__sub reveal" data-d="2">
-          Good people. Strong systems. Equipment we maintain ourselves. Clear
-          plans, quiet execution. One purpose: the event runs perfectly.
+          Good people. Serious drinks. Kit we maintain ourselves. Clear plans,
+          quiet execution. One purpose: the best bar at the event.
         </p>
         <p className="model__kicker mono reveal" data-d="2">
           One system · Five stages
